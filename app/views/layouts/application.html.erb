@@ -2,13 +2,66 @@
 <html>
 <head>
   <title>Company</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body>
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">СВАРБИ </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Сотрудники</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Вход</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="btn-group btn-group-justified">
+      <% ('А'..'Я').each do |letter| %>
+        <% next if ['Ъ', 'Ь'].include?(letter) %>
+
+        <%= link_to letter, "#letter=#{letter}", class: 'btn btn-default' %>
+      <% end %>
+
+      <%= link_to '*', '/persons', class: 'btn btn-default' %>
+  </div>
+
+  <%= yield %>
+</div>
+
+<div id="about_us" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h4 class="modal-title">About BigCo, Inc.</h4>
+      </div>
+      <div class="modal-body">
+        <p>BigCo produces the finest widgets in all the land.</p>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>
