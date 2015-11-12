@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+person1 = Person.create(name: 'Фёдор', lastname: 'Кукушкин', email: 'f.kukushkin@svarbi.ru', phone: 771, birthday: Date.yesterday)
+person2 = Person.create(name: 'Костя', lastname: 'Залупкин', email: 'k.zalupkin@svarbi.ru', phone: 799)
+person3 = Person.create(name: 'Лена', lastname: 'Головач', email: 'l.golovach@svarbi.ru', phone: 801, birthday: Date.tomorrow)

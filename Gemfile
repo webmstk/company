@@ -4,6 +4,7 @@ gem 'thin'
 gem 'therubyracer'
 
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'slim-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -69,4 +70,5 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
   gem 'database_cleaner'
+  gem 'capybara'
 end
