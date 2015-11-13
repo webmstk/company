@@ -9,20 +9,20 @@ table class="table table-stiped table-hover"
       th День рождения
       th
   tbody
-    - @persons.each do |person|
+    - @people.each do |person|
       tr
         td
-          = link_to "#{person.name} #{person.lastname}", '#'
+          = link_to person.full_name, '#'
         td = person.email
         td = person.phone
         td = person.birthday
         td style="text-align: right"
-          = link_to 'Edit', '#', class: 'btn btn-default btn-xs'
+          = link_to 'Изменить', '#', class: 'btn btn-default btn-xs'
           = ' '
-          = link_to 'Destroy', '#', class: 'btn btn-xs btn-danger'
+          = link_to 'Уволить', '#', class: 'btn btn-xs btn-danger'
 
 .form-actions
-  = link_to 'Новый сотрудник', '#', class: 'btn btn-primary'
+  = link_to 'Новый сотрудник', new_person_path, class: 'btn btn-primary'
       
       
 / <h1>Contacts</h1>
@@ -38,7 +38,7 @@ table class="table table-stiped table-hover"
 /   </thead>
 / 
 /   <tbody>
-/     <% @persons.each do |person| %>
+/     <% @people.each do |person| %>
 /       <tr>
 /         <td><a href="/contacts/2"><%= person.name %> <%= person.lastname %></a></td>
 /         <td><%= person.email %></td>

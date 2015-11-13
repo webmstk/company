@@ -1,0 +1,11 @@
+ru:
+  helpers:
+    submit:
+      create: Создать сотрудника
+    label:
+      person:
+        name: Имя
+        lastname: Фамилия
+        email: Email
+        phone: Телефон
+        birthday: День рождения

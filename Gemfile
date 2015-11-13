@@ -6,6 +6,10 @@ gem 'therubyracer'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'slim-rails'
 
+# datetime picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
