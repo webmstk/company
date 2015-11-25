@@ -24,4 +24,30 @@ RSpec.describe PeopleController, type: :controller do
       expect(response).to render_template :new
     end
   end
+
+  describe 'POST #create' do
+    let(:person) { build :person }
+
+    context 'with valid parameters' do
+      it 'creates new Person' do
+        expect { post :create, person: attributes_for(:person) }.to change(Person, :count).by(1)
+      end
+
+      it 'redirects to created person' do
+        post :create, person: attributes_for(:person)
+        expect(response).to redirect_to person_path(assigns(:person))
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not create new Person' do
+        expect { post :create, person: attributes_for(:invalid_person) }.to_not change(Person, :count)
+      end
+
+      it 're-renders :new view' do
+        post :create, person: attributes_for(:invalid_person)
+        expect(response).to render_template :new
+      end
+    end
+  end
 end
