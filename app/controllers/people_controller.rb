@@ -21,16 +21,32 @@ class PeopleController < ApplicationController
     end
   end
 
+  def edit
+    @person = Person.find(params[:id])
+  end
+
+  def update
+    @person = Person.find(params[:id])
+
+    if @person.update(person_params)
+      redirect_to person_path(@person)
+    else
+      render :edit
+    end
+  end
 
   def destroy
     person = Person.find(params[:id])
-    redirect_to people_path if person.destroy
+    if person.destroy
+      redirect_to people_path
+      flash[:notice] = 'Сотрудник успешно удалён!'
+    end
   end
 
 
   private
 
-    def person_params
-      params.require(:person).permit(:name, :lastname, :email, :phone, :birthday)
-    end
+  def person_params
+    params.require(:person).permit(:name, :lastname, :email, :phone, :birthday)
+  end
 end

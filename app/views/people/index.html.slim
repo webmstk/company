@@ -17,9 +17,9 @@ table class="table table-stiped table-hover"
         td = person.phone
         td = person.birthday
         td style="text-align: right"
-          = link_to 'Изменить', '#', class: 'btn btn-default btn-xs'
+          = link_to 'редактировать', edit_person_path(person), class: 'btn btn-default btn-xs'
           = ' '
-          = link_to 'Уволить', person_path(person), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Точно уволить?' }
+          = link_to 'уволить', person_path(person), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Точно уволить?' }
 
 .form-actions
   = link_to 'Новый сотрудник', new_person_path, class: 'btn btn-primary'

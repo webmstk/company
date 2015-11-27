@@ -1,0 +1,34 @@
+= form_for @person do |f|
+
+  .form-inputs
+
+    .form-group
+      = f.label :name
+      br
+      = f.text_field :name
+
+    .form-group
+      = f.label :lastname
+      br
+      = f.text_field :lastname
+
+    .form-group
+      = f.label :email
+      br
+      = f.text_field :email
+
+    .form-group
+      = f.label :phone
+      br
+      = f.text_field :phone
+
+    .form-group
+      = f.label :birthday
+      br
+      .col-sm-6
+        = f.text_field :birthday, class: 'datetimepicker9'
+
+  br
+  br
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
