@@ -13,6 +13,8 @@ feature 'create new person' do
     fill_in 'День рождения', with: '29 01 1986'
 
     click_on 'Создать сотрудника'
+
+    expect(current_path).to eq person_path(Person.last)
     expect(page).to have_content('Сотрудник успешно создан!')
   end
 end

@@ -3,6 +3,10 @@ class PeopleController < ApplicationController
     @people = Person.all
   end
 
+  def show
+    @person = Person.find(params[:id])
+  end
+
   def new
     @person = Person.new
   end
@@ -11,9 +15,16 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     if @person.save
       redirect_to person_path(@person)
+      flash[:notice] = 'Сотрудник успешно создан!'
     else
       render :new
     end
+  end
+
+
+  def destroy
+    person = Person.find(params[:id])
+    redirect_to people_path if person.destroy
   end
 
 

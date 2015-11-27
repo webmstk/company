@@ -1,0 +1,8 @@
+h1 = @person.full_name
+
+p = @person.email
+p = @person.phone
+p = @person.birthday
+
+.form-actions
+  = link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-primary'
