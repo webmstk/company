@@ -12,6 +12,8 @@ class PeopleController < ApplicationController
   end
 
   def create
+    params[:person][:birthday] = RussianDate.parse(params[:person][:birthday])
+
     @person = Person.new(person_params)
     if @person.save
       redirect_to person_path(@person)
@@ -26,6 +28,7 @@ class PeopleController < ApplicationController
   end
 
   def update
+    params[:person][:birthday] = RussianDate.parse(params[:person][:birthday])
     @person = Person.find(params[:id])
 
     if @person.update(person_params)
