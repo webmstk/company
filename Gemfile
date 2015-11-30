@@ -73,4 +73,5 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'faker'
+  gem 'launchy'
 end

@@ -2,12 +2,12 @@ class Person < ActiveRecord::Base
   validates :name,
             presence: true,
             length: { in: 2..20 },
-            format: { with: /\A[А-Яа-яA-Za-z]+\z/ }
+            format: { with: /\A[А-Яа-яёЁ]+\z/ }
 
   validates :lastname,
             presence: true,
             length: { in: 2..20 },
-            format: { with: /\A[А-Яа-яA-Za-z]+\z/ }
+            format: { with: /\A[А-Яа-яёЁ]+\z/ }
 
   validates :email,
             format: { with: /.+@.+\..+/i }

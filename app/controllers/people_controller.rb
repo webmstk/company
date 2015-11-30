@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    params[:person][:birthday] = RussianDate.parse(params[:person][:birthday])
+    params[:person][:birthday] = RussianDate.rus_to_date(params[:person][:birthday])
 
     @person = Person.new(person_params)
     if @person.save
@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
   end
 
   def update
-    params[:person][:birthday] = RussianDate.parse(params[:person][:birthday])
+    params[:person][:birthday] = RussianDate.rus_to_date(params[:person][:birthday])
     @person = Person.find(params[:id])
 
     if @person.update(person_params)

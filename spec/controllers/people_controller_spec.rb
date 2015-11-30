@@ -94,10 +94,10 @@ RSpec.describe PeopleController, type: :controller do
       end
 
       it 'updates person\'s attributes' do
-        patch :update, id: person, person: { name: 'name', lastname: 'lastname' }
+        patch :update, id: person, person: { name: 'имя', lastname: 'фамилия' }
         person.reload
-        expect(person.name).to eq 'name'
-        expect(person.lastname).to eq 'lastname'
+        expect(person.name).to eq 'имя'
+        expect(person.lastname).to eq 'фамилия'
       end
 
       it 'redirects to the updated person' do
@@ -107,7 +107,7 @@ RSpec.describe PeopleController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      before { patch :update, id: person, person: { name: nil, lastname: 'lastname' } }
+      before { patch :update, id: person, person: { name: nil, lastname: 'фамилия' } }
 
       it 'does not change attributes' do
         person.reload

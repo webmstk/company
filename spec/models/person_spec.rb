@@ -18,8 +18,8 @@ RSpec.describe Person, type: :model do
                   .is_at_least(2).with_short_message('Имя должно содержать не менее 2 символов')
                   .is_at_most(20).with_long_message('Имя должно содержать не более 20 символов') }
 
-  good_names = %w(Паша ПАША паша Pasha PASHA pasha)
-  bad_names = %w(Паша1 1234 Pasha. Па\ ша)
+  good_names = %w(Паша ПАША паша)
+  bad_names = %w(Паша1 1234 Pasha Паша. Па\ ша)
   it { should allow_values(*good_names).for(:name) }
   it { should_not allow_values(*bad_names).for(:name)
                       .with_message('Разрешены только символы русского и латинского алфавита') }
@@ -32,8 +32,8 @@ RSpec.describe Person, type: :model do
                   .is_at_least(2).with_short_message('Фамилия должна содержать не менее 2 символов')
                   .is_at_most(20).with_long_message('Фамилия должна содержать не более 20 символов') }
 
-  good_lastnames = %w(Бакун БАКУН бакун Bakun BAKUN bakun)
-  bad_lastnames = %w(Бакун1 1234 Bakun. Ba\ kun)
+  good_lastnames = %w(Бакун БАКУН бакун)
+  bad_lastnames = %w(Бакун1 1234 Bakun Бакун. Ба\ кун)
   it { should allow_values(*good_lastnames).for(:lastname) }
   it { should_not allow_values(*bad_lastnames).for(:lastname)
                       .with_message('Разрешены только символы русского и латинского алфавита') }

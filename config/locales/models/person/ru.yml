@@ -1,5 +1,15 @@
 ru:
   activerecord:
+    models:
+      person:
+        one: Сотрудник
+        other: Сотрудники
+    attributes:
+      name: Имя
+      lastname: Фамилия
+      email: Email
+      phone: Телефон
+      birthday: День рождения
     errors:
       models:
         person:

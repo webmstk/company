@@ -11,12 +11,11 @@ feature 'edit the person' do
 
     click_on 'редактировать'
     expect(current_path).to eq edit_person_path(person)
-
     fill_in 'Имя', with: another.name
     fill_in 'Фамилия', with: another.lastname
     fill_in 'Email', with: another.email
     fill_in 'Телефон', with: another.phone
-    fill_in 'День рождения', with: another.birthday
+    fill_in 'День рождения', with: RussianDate::date_to_rus(another.birthday)
 
     click_on 'Сохранить изменения'
     expect(current_path).to eq person_path(person)
