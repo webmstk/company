@@ -37,5 +37,11 @@ RSpec.describe RussianDate do
         end
       end
     end
+
+    context 'with nil passed' do
+      it 'returns ni' do
+        expect(RussianDate::date_to_rus(nil)).to eq nil
+      end
+    end
   end
 end

@@ -20,6 +20,7 @@ class RussianDate
   end
 
   def self.date_to_rus(date)
+    return date if date.nil?
     ar = date.to_formatted_s(:iso8601).split('-')
     month = Months.key(ar[1]).to_s
 

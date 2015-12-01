@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    @people = Person.all
+    @people = Person.all.order(:lastname)
   end
 
   def show
@@ -16,7 +16,7 @@ class PeopleController < ApplicationController
 
     @person = Person.new(person_params)
     if @person.save
-      redirect_to person_path(@person)
+      redirect_to people_path
       flash[:notice] = 'Сотрудник успешно создан!'
     else
       render :new

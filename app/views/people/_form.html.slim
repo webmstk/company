@@ -1,32 +1,38 @@
 = form_for @person do |f|
 
+  - if @person.errors.any?
+    br
+    #error_explanation
+      h4 Сотрудник не сохранён!
+      ul
+        - @person.errors.values.each do |error|
+          li = error.first
+    br
+
+
   .form-inputs
 
     .form-group
       = f.label :name
-      br
-      = f.text_field :name
+      = f.text_field :name, class: 'form-control'
 
     .form-group
       = f.label :lastname
-      br
-      = f.text_field :lastname
+      = f.text_field :lastname, class: 'form-control'
 
     .form-group
       = f.label :email
-      br
-      = f.text_field :email
+      = f.text_field :email, class: 'form-control'
 
     .form-group
       = f.label :phone
-      br
-      = f.text_field :phone
+      = f.text_field :phone, class: 'form-control'
 
     .form-group
       = f.label :birthday
       br
       .col-sm-6
-        = f.text_field :birthday, class: 'datetimepicker9'
+        = f.text_field :birthday, class: 'datetimepicker9 form-control'
 
   br
   br

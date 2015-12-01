@@ -52,7 +52,7 @@ RSpec.describe PeopleController, type: :controller do
 
       it 'redirects to created person' do
         post :create, person: attributes_for(:person)
-        expect(response).to redirect_to person_path(assigns(:person))
+        expect(response).to redirect_to people_path
       end
     end
 
