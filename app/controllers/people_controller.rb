@@ -4,6 +4,7 @@ class PeopleController < ApplicationController
   before_action :convert_birthday, only: [:create, :update]
 
   def index
+    BirthdayMailer.notify.deliver_now
     @people = Person.all.order(:lastname)
   end
 
