@@ -17,9 +17,11 @@ table class='table table-striped table-hover'
         td = person.phone
         td = RussianDate::date_to_rus(person.birthday)
         td style="text-align: right"
-          = link_to 'редактировать', edit_person_path(person), class: 'btn btn-default btn-xs'
-          = ' '
-          = link_to 'уволить', person_path(person), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Точно уволить?' }
+          - if current_user
+            = link_to 'редактировать', edit_person_path(person), class: 'btn btn-default btn-xs'
+            = ' '
+            = link_to 'уволить', person_path(person), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Точно уволить?' }
 
-.form-actions
-  = link_to 'Новый сотрудник', new_person_path, class: 'btn btn-primary'
+- if current_user
+  .form-actions
+    = link_to 'Новый сотрудник', new_person_path, class: 'btn btn-primary'

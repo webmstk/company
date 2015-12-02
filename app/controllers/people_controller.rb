@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :authenticate, except: [:index, :show]
   before_action :load_person, only: [:show, :edit, :update, :destroy]
   before_action :convert_birthday, only: [:create, :update]
 
@@ -11,10 +12,13 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    authorize @person
   end
 
   def create
     @person = Person.new(person_params)
+    authorize @person
+
     if @person.save
       redirect_to people_path
       flash[:notice] = 'Сотрудник успешно создан!'
@@ -24,9 +28,12 @@ class PeopleController < ApplicationController
   end
 
   def edit
+    authorize @person
   end
 
   def update
+    authorize @person
+
     if @person.update(person_params)
       redirect_to person_path(@person)
     else
@@ -35,8 +42,9 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    person = Person.find(params[:id])
-    if person.destroy
+    authorize @person
+
+    if @person.destroy
       redirect_to people_path
       flash[:notice] = 'Сотрудник успешно удалён!'
     end

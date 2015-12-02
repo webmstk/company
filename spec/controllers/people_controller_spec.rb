@@ -30,6 +30,7 @@ RSpec.describe PeopleController, type: :controller do
 
 
   describe 'GET #new' do
+    sign_in_user
     before { get :new }
 
     it 'assigns new Person to @person' do
@@ -44,6 +45,8 @@ RSpec.describe PeopleController, type: :controller do
 
   describe 'POST #create' do
     let(:person) { build :person }
+
+    sign_in_user
 
     context 'with valid parameters' do
       it 'creates new Person' do
@@ -72,6 +75,7 @@ RSpec.describe PeopleController, type: :controller do
   describe 'GET #edit' do
     let(:person) { create :person }
 
+    sign_in_user
     before { get :edit, id: person }
 
     it 'assigns @person' do
@@ -86,6 +90,8 @@ RSpec.describe PeopleController, type: :controller do
 
   describe 'PATCH #update' do
     let(:person) { create :person }
+
+    sign_in_user
 
     context 'with valid attributes' do
       it 'assigns @person' do
@@ -124,6 +130,8 @@ RSpec.describe PeopleController, type: :controller do
 
   describe 'DELETE #destroy' do
     let!(:person) { create :person }
+
+    sign_in_user
 
     it 'deletes the person from the database' do
       expect { delete :destroy, id: person }.to change(Person, :count).by(-1)
