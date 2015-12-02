@@ -1,0 +1,19 @@
+h1 Вход
+
+- if current_user
+   p Вход уже выполнен
+   = link_to 'Выйти', logout_path, class: 'btn btn-default'
+- else
+  = form_tag login_path do
+    .form-inputs.login-form
+
+      .form-group
+        = label_tag :login, 'Логин'
+        = text_field_tag :login, params[:login], class: 'form-control'
+
+      .form-group
+        = label_tag :password, 'Пароль'
+        = password_field_tag :password, nil, class: 'form-control'
+
+    .form-actions
+      = submit_tag 'Войти', class: 'btn btn-primary'

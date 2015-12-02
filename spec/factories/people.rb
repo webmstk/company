@@ -5,9 +5,9 @@ FactoryGirl.define do
     email { Faker::Internet.free_email }
     phone { Faker::PhoneNumber.subscriber_number(3) }
     birthday { Faker::Date.between(30.years.ago, 20.years.ago) }
-  end
 
-  factory :invalid_person, class: Person do
-    name nil
+    factory :invalid_person do
+      name nil
+    end
   end
 end

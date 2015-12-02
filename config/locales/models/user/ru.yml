@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        other: Пользователи
+    attributes:
+      user:
+        login: Логин
+        password_digest: Пароль
+    errors:
+      models:
+        user:
+          attributes:
+            login:
+              blank: Не введен логин
+              taken: Логин занят
+            password:
+               blank: Не введен пароль

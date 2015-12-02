@@ -7,7 +7,7 @@ RSpec.configure do |config|
   Capybara.default_max_wait_time = 5
   Capybara.server_port = 3099
 
-  # config.include FeatureMacros, type: :feature
+  config.include FeatureMacros, type: :feature
 
   config.use_transactional_fixtures = false
 
