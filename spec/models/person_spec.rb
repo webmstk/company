@@ -40,8 +40,8 @@ RSpec.describe Person, type: :model do
 
 
   # email
-  it { should allow_values('eta@svarbi.ru', '').for(:email) }
-  it { should_not allow_values('etasvarbi.ru', 'eta@svarbi.ru').for(:email)
+  it { should allow_values('eta@svarbi.ru', 'eta').for(:email) }
+  it { should_not allow_values('@etasvarbi.ru', 'eta@').for(:email)
                       .with_message('Email не выглядит правильным') }
 
 
@@ -62,4 +62,19 @@ RSpec.describe Person, type: :model do
       expect(person.full_name).to eq [person.name, person.lastname].join(' ')
     end
   end
+
+  # describe '#complete_email' do
+  #   let(:person) { build :person, email: 'test' }
+  #
+  #   it 'completes string with @svarbi.ru if string given' do
+  #     person.complete_email
+  #     expect(person.email).to eq 'test@svarbi.ru'
+  #   end
+  #
+  #   it 'does not change valid email' do
+  #     person.email = 'test@svarbi.ru'
+  #     person.complete_email
+  #     expect(person.email).to eq 'test@svarbi.ru'
+  #   end
+  # end
 end

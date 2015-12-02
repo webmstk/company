@@ -5,7 +5,7 @@ RSpec.describe PeopleController, type: :controller do
     before { get :index }
 
     it 'assigns all people to @people' do
-      expect(assigns :people).to eq create_list(:person, 2)
+      expect(assigns :people).to match_array create_list(:person, 2)
     end
 
     it 'renders #index view' do
@@ -96,8 +96,8 @@ RSpec.describe PeopleController, type: :controller do
       it 'updates person\'s attributes' do
         patch :update, id: person, person: { name: 'имя', lastname: 'фамилия' }
         person.reload
-        expect(person.name).to eq 'имя'
-        expect(person.lastname).to eq 'фамилия'
+        expect(person.name).to eq 'Имя'
+        expect(person.lastname).to eq 'Фамилия'
       end
 
       it 'redirects to the updated person' do

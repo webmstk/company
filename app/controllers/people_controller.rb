@@ -1,10 +1,12 @@
 class PeopleController < ApplicationController
+  before_action :load_person, only: [:show, :edit, :update, :destroy]
+  before_action :convert_birthday, only: [:create, :update]
+
   def index
     @people = Person.all.order(:lastname)
   end
 
   def show
-    @person = Person.find(params[:id])
   end
 
   def new
@@ -12,8 +14,6 @@ class PeopleController < ApplicationController
   end
 
   def create
-    params[:person][:birthday] = RussianDate.rus_to_date(params[:person][:birthday])
-
     @person = Person.new(person_params)
     if @person.save
       redirect_to people_path
@@ -24,13 +24,9 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.find(params[:id])
   end
 
   def update
-    params[:person][:birthday] = RussianDate.rus_to_date(params[:person][:birthday])
-    @person = Person.find(params[:id])
-
     if @person.update(person_params)
       redirect_to person_path(@person)
     else
@@ -49,7 +45,15 @@ class PeopleController < ApplicationController
 
   private
 
+  def load_person
+    @person = Person.find(params[:id])
+  end
+
   def person_params
     params.require(:person).permit(:name, :lastname, :email, :phone, :birthday)
+  end
+
+  def convert_birthday
+    params[:person][:birthday] = RussianDate.rus_to_date(params[:person][:birthday])
   end
 end

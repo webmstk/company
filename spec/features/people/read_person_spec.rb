@@ -1,10 +1,12 @@
 require_relative '../feature_helper'
 
 feature 'read the person' do
-  given(:person) { create :person }
+  given!(:person) { create :person }
 
   scenario 'read the person' do
-    visit person_path(person)
+    visit people_path
+    click_on person.full_name
+    expect(current_path).to eq person_path(person)
 
     fields = [:email, :phone, :birthday]
 

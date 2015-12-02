@@ -6,3 +6,9 @@ p = @person.birthday
 
 .form-actions
   = link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-primary'
+
+br
+
+.row
+  div class='col-md-2 col-md-offset-5'
+    = link_to 'К списку сотрудников', people_path, class: 'btn btn-primary'
