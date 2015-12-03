@@ -36,6 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'dotenv-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -52,7 +53,6 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
-  gem 'dotenv-rails'
 end
 
 group :development do
