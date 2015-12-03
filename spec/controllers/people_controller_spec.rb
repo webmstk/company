@@ -106,9 +106,9 @@ RSpec.describe PeopleController, type: :controller do
         expect(person.lastname).to eq 'Фамилия'
       end
 
-      it 'redirects to the updated person' do
+      it 'redirects to the people_path' do
         patch :update, id: person, person: attributes_for(:person)
-        expect(response).to redirect_to person_path(person)
+        expect(response).to redirect_to people_path
       end
     end
 

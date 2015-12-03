@@ -8,6 +8,7 @@ RSpec.describe Person, type: :model do
   it { should respond_to :birthday }
   it { should respond_to :created_at }
   it { should respond_to :updated_at }
+  it { should respond_to :birthday_sort }
   it { should respond_to :full_name }
 
 
@@ -53,13 +54,16 @@ RSpec.describe Person, type: :model do
                   .only_integer.with_message('Телефон может содержать только цифры')
                   .allow_nil }
 
+  # birthday_sort
+  # todo
+
 
   # methods
   describe '#full_name' do
     let(:person) { create :person }
 
     it 'returns full person name' do
-      expect(person.full_name).to eq [person.name, person.lastname].join(' ')
+      expect(person.full_name).to eq [person.lastname, person.name].join(' ')
     end
   end
 

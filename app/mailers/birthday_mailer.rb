@@ -6,8 +6,12 @@ class BirthdayMailer < ApplicationMailer
   #   en.birthday_mailer.notify.subject
   #
   def notify
-    @greeting = "Hi"
+    @persons = Person.birthday
 
-    mail(to: "to@example.org", template_path: 'mails', template_name: 'birthday_mailer/notify')
+    emails = %w(eta@svarbi.ru)
+
+    emails.each do |email|
+      mail(to: email, subject: 'СВАРБИ: дни рождения', template_path: 'mails', template_name: 'birthday_mailer/notify')
+    end
   end
 end

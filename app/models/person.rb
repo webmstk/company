@@ -18,13 +18,24 @@ class Person < ActiveRecord::Base
             numericality: {only_integer: true, allow_nil: true},
             allow_blank: true
 
+  validates :birthday_sort,
+            presence: true, unless: 'birthday.nil?'
+
+
   before_validation :complete_email
   before_validation :downcase_email
   before_validation :capitalize_name
+  before_validation :fill_birthday_sort
+
+  scope :birthday, -> do
+    from = Date.today.strftime('%m%d')
+    to = 7.days.from_now.strftime('%m%d')
+    where(birthday_sort: from..to)
+  end
 
 
   def full_name
-    [name, lastname].join(' ')
+    [lastname, name].join(' ')
   end
 
 
@@ -43,5 +54,9 @@ class Person < ActiveRecord::Base
   def capitalize_name
     self.name = self.name.mb_chars.capitalize unless self.name.blank?
     self.lastname = self.lastname.mb_chars.capitalize unless self.lastname.blank?
+  end
+
+  def fill_birthday_sort
+    self.birthday_sort = self.birthday.strftime("%m%d") unless self.birthday.nil?
   end
 end

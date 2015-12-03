@@ -12,7 +12,7 @@ feature 'edit the person' do
         sign_in(user)
         visit people_path
 
-        fields = [:name, :lastname, :email, :phone, :birthday]
+        fields = [:name, :lastname, :email, :phone]
 
         click_on 'редактировать'
         expect(current_path).to eq edit_person_path(person)
@@ -23,16 +23,19 @@ feature 'edit the person' do
         fill_in 'День рождения', with: RussianDate::date_to_rus(another.birthday)
 
         click_on 'Сохранить изменения'
-        expect(current_path).to eq person_path(person)
+        expect(current_path).to eq people_path
 
         fields.each do |field|
           expect(page).to have_content another.send(field)
           expect(page).to_not have_content person.send(field)
         end
+
+        expect(page).to have_content RussianDate::date_to_rus(another.birthday)
+        expect(page).to_not have_content RussianDate::date_to_rus(person.birthday)
       end
     end
 
-    context 'with valid params' do
+    context 'with invalid params' do
       scenario 'edit the person' do
         sign_in(user)
         visit people_path

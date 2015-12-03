@@ -40,13 +40,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
+  #   address:              'smtp.yandex.ru',
   #   port:                 587,
   #   domain:               'company.svarbi.ru',
-  #   user_name:            'etalord',
+  #   user_name:            'etalord@yandex.ru',
   #   password:             'password',
   #   authentication:       'plain',
-  #   enable_starttls_auto: true  }
+  # }
 end

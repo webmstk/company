@@ -1,3 +1,6 @@
-BirthdayMailer#notify
+/= debug @persons
 
-= @greeting + ", find me in app/views/birthday_mailer/notify.html.slim"
+h4 Ура! В ближайшее время кушаем пиццу в честь:
+
+- @persons.each do |person|
+  p = "#{person.full_name}: #{person.birthday.strftime('%e')} числа"
