@@ -6,7 +6,7 @@ class BirthdayMailer < ApplicationMailer
   #   en.birthday_mailer.notify.subject
   #
   def notify
-    emails = %w(eta@svarbi.ru)
+    emails = %w(eta@svarbi.ru lubov@svarbi.ru)
 
     @persons = Person.birthday
     if @persons.any?
