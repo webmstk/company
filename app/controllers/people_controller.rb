@@ -28,6 +28,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
+    @person.birthday = RussianDate::date_to_rus(@person.birthday)
     authorize @person
   end
 
