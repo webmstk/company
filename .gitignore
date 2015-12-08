@@ -14,6 +14,7 @@
 
 # Ignore uploaded files
 /public/uploads
+/public/assets
 
 # Ignore database configuration
 /config/database.yml

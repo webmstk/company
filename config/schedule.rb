@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 5.minutes do
+job_type :rake, "cd #{path} && RAILS_ENV=production ~/.rvm/bin/rvm default do bundle exec rake :task :output"
+
+every 1.day, at: '9:30 am' do
   rake 'birthday:send'
 end
