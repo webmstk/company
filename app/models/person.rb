@@ -29,7 +29,7 @@ class Person < ActiveRecord::Base
 
   scope :birthday, -> do
     from = Date.today.strftime('%m%d')
-    to = 7.days.from_now.strftime('%m%d')
+    to = 15.days.from_now.strftime('%m%d')
     where(birthday_sort: from..to)
   end
 
