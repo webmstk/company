@@ -21,6 +21,7 @@
 
 job_type :rake, "cd #{path} && RAILS_ENV=production ~/.rvm/bin/rvm default do bundle exec rake :task :output"
 
-every 1.day, at: '10:00 am' do
+# every 1.day, at: '10:00 am' do
+every 2.minutes do
   rake 'birthday:send'
 end

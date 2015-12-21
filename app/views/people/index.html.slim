@@ -11,8 +11,7 @@ table class='table table-striped table-hover'
   tbody
     - @people.each do |person|
       tr
-        td
-          = link_to person.full_name, person_path(person)
+        td = link_to person.full_name, person_path(person)
         td = person.email
         td = person.phone
         td = RussianDate::date_to_rus(person.birthday)
@@ -25,3 +24,6 @@ table class='table table-striped table-hover'
 - if current_user
   .form-actions
     = link_to 'Новый сотрудник', new_person_path, class: 'btn btn-primary'
+
+br
+br
