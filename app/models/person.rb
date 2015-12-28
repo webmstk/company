@@ -63,4 +63,8 @@ class Person < ActiveRecord::Base
   def fill_birthday_sort
     self.birthday_sort = self.birthday.strftime("%m%d") unless self.birthday.nil?
   end
+
+  def self.by_letter(letter)
+    where('lastname LIKE ?', "#{letter}%")
+  end
 end

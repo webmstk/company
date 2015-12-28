@@ -4,7 +4,11 @@ class PeopleController < ApplicationController
   before_action :convert_birthday, only: [:create, :update]
 
   def index
-    @people = Person.all.order(:birthday_sort)
+    if params[:letter]
+      @people = Person.by_letter(params[:letter]).order(:birthday_sort)
+    else
+      @people = Person.all.order(:birthday_sort)
+    end
   end
 
   def show
