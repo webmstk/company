@@ -30,7 +30,11 @@ class Person < ActiveRecord::Base
   scope :birthday, -> do
     from = Date.today.strftime('%m%d')
     to = 15.days.from_now.strftime('%m%d')
-    where(birthday_sort: from..to)
+    if from > to # begin of the year
+      where('(birthday_sort >= ? AND birthday_sort <= ?) OR (birthday_sort >= ? AND birthday_sort <= ?)', from, '1231', '0101', to)
+    else
+      where(birthday_sort: from..to)
+    end
   end
 
 
