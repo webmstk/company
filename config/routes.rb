@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :people
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :people, concerns: :paginatable
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'people#index'

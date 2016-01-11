@@ -12,6 +12,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 gem 'pundit'
 gem 'whenever', require: false
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

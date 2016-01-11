@@ -3,3 +3,10 @@ ru:
     errors:
       messages:
         record_invalid: "Объект не валиден: %{errors}"
+  views:
+    pagination:
+      first: Начало
+      last: Конец
+      previous: Пред.
+      next: След.
+      truncate: "&hellip;"

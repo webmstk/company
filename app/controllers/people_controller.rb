@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
     if params[:letter]
       @people = Person.by_letter(params[:letter]).order(:birthday_sort)
     else
-      @people = Person.all.order(:birthday_sort)
+      @people = Person.all.order(:birthday_sort).page(params[:page])
     end
   end
 
