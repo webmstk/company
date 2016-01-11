@@ -5,9 +5,10 @@ class PeopleController < ApplicationController
 
   def index
     if params[:letter]
-      @people = Person.by_letter(params[:letter]).order(:birthday_sort)
+      @people = Person.by_letter(params[:letter]).order(:lastname).page(params[:page])
     else
-      @people = Person.all.order(:birthday_sort).page(params[:page])
+      @people = Kaminari.paginate_array(Person.all.birthday_order)
+                        .page(params[:page]).per(20)
     end
   end
 

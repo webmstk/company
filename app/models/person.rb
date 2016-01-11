@@ -27,6 +27,7 @@ class Person < ActiveRecord::Base
   before_validation :capitalize_name
   before_validation :fill_birthday_sort
 
+
   scope :birthday, -> do
     from = Date.today.strftime('%m%d')
     to = 15.days.from_now.strftime('%m%d')
@@ -34,6 +35,19 @@ class Person < ActiveRecord::Base
       where('(birthday_sort >= ? AND birthday_sort <= ?) OR (birthday_sort >= ? AND birthday_sort <= ?)', from, '1231', '0101', to)
     else
       where(birthday_sort: from..to)
+    end
+  end
+
+
+  def self.birthday_order
+    now = Time.now.strftime("%m%d").to_i
+
+    all.sort_by do |person|
+      if person.birthday_sort.to_i < now
+        (person.birthday_sort.nil?) ? 2500 : person.birthday_sort.to_i + 1231
+      else
+        person.birthday_sort
+      end
     end
   end
 

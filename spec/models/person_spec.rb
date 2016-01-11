@@ -55,7 +55,18 @@ RSpec.describe Person, type: :model do
                   .allow_nil }
 
   # birthday_sort
-  # todo
+  # describe '.birthday_order' do
+  #   let!(:now) { Date.parse('1986-03-01') }
+  #   let!(:person1) { create :person, birthday: Date.parse('1986-02-01') }
+  #   let!(:person2) { create :person, birthday: Date.parse('1986-01-01') }
+  #   let!(:person3) { create :person, birthday: Date.parse('1986-04-01') }
+  #   let!(:person4) { create :person, birthday: Date.parse('1986-05-01') }
+
+  #   it 'sort people by day of birth' do
+  #     expect(Time).to receive(:now).and_return(now)
+  #     expect(Person.birthday_order).to eq [person3, person4, person2, person1]
+  #   end
+  # end
 
 
   # methods
