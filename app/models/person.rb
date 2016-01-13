@@ -32,9 +32,9 @@ class Person < ActiveRecord::Base
     from = Date.today.strftime('%m%d')
     to = 15.days.from_now.strftime('%m%d')
     if from > to # begin of the year
-      where('(birthday_sort >= ? AND birthday_sort <= ?) OR (birthday_sort >= ? AND birthday_sort <= ?)', from, '1231', '0101', to)
+      where('(birthday_sort >= ? AND birthday_sort <= ?) OR (birthday_sort >= ? AND birthday_sort <= ?)', from, '1231', '0101', to).order(:birthday_sort)
     else
-      where(birthday_sort: from..to)
+      where(birthday_sort: from..to).order(:birthday_sort)
     end
   end
 
@@ -56,6 +56,20 @@ class Person < ActiveRecord::Base
     [lastname, name].join(' ')
   end
 
+  def print_coming_age
+    age = (Date.current - self.birthday).to_i / 365 + 1
+
+    years_old = case age.to_s.last.to_i
+    when 1
+      'год'
+    when 2..4
+      'года'
+    else
+      'лет'
+    end
+
+    "#{age} #{years_old}"
+  end
 
   private
 

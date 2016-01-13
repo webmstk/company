@@ -1,6 +1,29 @@
 /= debug @persons
 
-h4 Ура! В ближайшее время кушаем пиццу в честь:
+.wrap style='font-family: arial'
+  table width='100%'
+    tbody
+      tr
+        td align='center'
 
-- @persons.each do |person|
-  p = "#{person.full_name}: #{person.birthday.strftime('%e')} числа"
+          table width='500' cellspacing='10'
+            thead
+              tr align='center' bgcolor='#7b7b7b'
+                td colspan='5' valign='center' height='50'
+                  b style='color: #ffffff; font-size: 13px' Ура! В ближайшее время кушаем пиццу в честь:
+            tbody
+              - @persons.each do |person|
+                tr height='50' style='font-size: 13px'
+                  td
+                  td = person.full_name
+                  td = RussianDate::date_to_rus(person.birthday, true)
+                  td = person.print_coming_age
+                  td
+                tr
+                  td colspan='5' height='1'
+                    div style='height: 1px; background: #7b7b7b'
+
+          br
+          p style='font-size: 14px'
+            | Список всех именнинников - 
+            = link_to 'company.svarbi.ru', people_url

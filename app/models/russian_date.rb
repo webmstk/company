@@ -19,12 +19,12 @@ class RussianDate
     Date.parse(date) if date
   end
 
-  def self.date_to_rus(date)
+  def self.date_to_rus(date, short = false)
     return date if date.nil?
     ar = date.to_formatted_s(:iso8601).split('-')
     month = Months.key(ar[1]).to_s
 
-    "#{ar[2]} #{month} #{ar[0]}"
+    short ? "#{ar[2]} #{month}" : "#{ar[2]} #{month} #{ar[0]}"
   end
 
 
