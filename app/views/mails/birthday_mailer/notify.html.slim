@@ -1,6 +1,6 @@
 /= debug @persons
 
-.wrap style='font-family: arial'
+.wrap
   table width='100%'
     tbody
       tr
@@ -10,20 +10,23 @@
             thead
               tr align='center' bgcolor='#7b7b7b'
                 td colspan='5' valign='center' height='50'
-                  b style='color: #ffffff; font-size: 13px' Ура! В ближайшее время кушаем пиццу в честь:
+                  b style='color: #ffffff; font: 13px arial' Ура! В ближайшее время кушаем пиццу в честь:
             tbody
               - @persons.each do |person|
                 tr height='50' style='font-size: 13px'
                   td
-                  td = person.full_name
-                  td = RussianDate::date_to_rus(person.birthday, true)
-                  td = person.print_coming_age
+                  td
+                    span style='font: 13px arial' = person.full_name
+                  td
+                    span style='font: 13px arial' = RussianDate::date_to_rus(person.birthday, true)
+                  td
+                    span style='font: 13px arial' = person.print_coming_age
                   td
                 tr
-                  td colspan='5' height='1'
-                    div style='height: 1px; background: #7b7b7b'
+                  td colspan='5' height='1' style='border-bottom: 1px solid #7b7b7b'
+                    span
 
           br
-          p style='font-size: 14px'
+          p style='font: 14px arial'
             | Список всех именнинников - 
             = link_to 'company.svarbi.ru', people_url
