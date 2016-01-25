@@ -1,3 +1,12 @@
+- content_for :letters
+  .btn-group.btn-group-justified
+    - ('А'..'Я').each do |letter|
+      - next if ['Ъ', 'Ь'].include?(letter)
+      = link_to letter, people_path(letter: letter), class: 'btn btn-default'
+    = link_to '*', people_path, class: 'btn btn-default'
+  br
+
+
 h1 Сотрудники
 
 table class='table table-striped table-hover'

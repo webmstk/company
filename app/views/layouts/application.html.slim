@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title !СВАРБИ!
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  body
+    .navbar.navbar-default.navbar-fixed-top role='navigation'
+      .container
+        .navbar-header
+          button.navbar-toggle data-target='.navbar-collapse' data-toggle='collapse' type='button'
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'СВАРБИ', root_path, class: 'navbar-brand'
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              = link_to 'Сотрудники', people_path
+            - if policy(:setting).index?
+              li
+                = link_to 'Настройки', settings_path
+          ul.nav.navbar-nav.navbar-right
+            - if current_user
+              li
+                = link_to 'Выход', logout_path
+            - else
+              li
+                = link_to 'Вход', login_path
+
+    .container
+      = yield :letters
+      /- if controller_name == 'people'
+      /  .btn-group.btn-group-justified
+      /    - ('А'..'Я').each do |letter|
+      /      - next if ['Ъ', 'Ь'].include?(letter)
+      /      = link_to letter, people_path(letter: letter), class: 'btn btn-default'
+      /    = link_to '*', people_path, class: 'btn btn-default'
+      /  br
+
+      - flash.each do |name, msg|
+        - if name == 'notice'
+          .alert.alert-success
+        - else
+          .alert.alert-danger
+        button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
+        = msg
+
+      = yield
