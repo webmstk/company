@@ -1,0 +1,6 @@
+<% if @subscriber.errors.any? %>
+  $('#subscriber_errors').html('<%= @subscriber.errors.messages[:email][0] %>');
+<% else %>
+  $('#new_subscriber table').append('<tr id="subscriber-id-<%= @subscriber.id %>"><td><%= @subscriber.email %></td><td class="action"><a href="/subscribers/<%= @subscriber.id %>" data-method="delete" rel="nofollow" data-remote="true" title="удалить" class="glyphicon glyphicon-remove"></a><a href="/subscribers/<%= @subscriber.id %>/notify" data-remote="true" rel="nofollow" title="отправить письмо" class="glyphicon glyphicon-send"></a></td></tr>');
+  $('#subscriber_email').val('');
+<% end %>

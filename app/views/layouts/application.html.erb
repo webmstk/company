@@ -22,6 +22,9 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="<%= people_path %>">Сотрудники</a></li>
+        <% if policy(:setting).index? %>
+            <li><a href="<%= settings_path %>">Настройки</a></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

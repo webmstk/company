@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        subscriber:
+          attributes:
+            email:
+              invalid: Email не выглядит правильным
+              blank: Введите email
+              taken: Такой email уже есть

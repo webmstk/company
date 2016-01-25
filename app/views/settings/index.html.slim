@@ -1,0 +1,23 @@
+h1 Настройки
+
+br
+
+h5 Подписчики на рассылку уведомлений о ДР
+hr
+
+= form_for @subscriber, remote: true do |f|
+  .panel.panel-default
+    .panel-heading Список email
+    table.table
+      - @subscribers.each do |subscriber|
+        tr id="subscriber-id-#{subscriber.id}"
+          td = subscriber.email
+          td.action
+            = link_to '', subscriber_path(subscriber), method: :delete, remote: true, class: 'glyphicon glyphicon-remove', title: 'удалить'
+            = link_to '', notify_subscriber_path(subscriber), remote: true, class: 'glyphicon glyphicon-send', title: 'отправить письмо'
+
+  .input-group
+    = text_field_tag 'subscriber[email]', nil, placeholder: 'email', class: 'form-control'
+    span.input-group-btn
+      button.btn.btn-default type='button' добавить
+  #subscriber_errors

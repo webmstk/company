@@ -57,7 +57,7 @@ class Person < ActiveRecord::Base
   end
 
   def print_coming_age
-    age = (Date.current - self.birthday).to_i / 365 + 1
+    age = (Date.current - self.birthday).to_i / 365
 
     years_old = case age.to_s.last.to_i
     when 1

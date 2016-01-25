@@ -1,7 +1,7 @@
 namespace :birthday do
   desc 'рассылка уведомлений о ближайших днях рождениях'
   task send: :environment do
-    BirthdayMailer.notify.deliver_now
+    Subscriber::notify_all
   end
 end
 

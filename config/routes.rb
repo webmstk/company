@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :people, concerns: :paginatable
   resources :sessions, only: [:new, :create, :destroy]
+  resources :subscribers, only: [:create, :destroy] do
+    get :notify, on: :member
+  end
+  get 'settings', to: 'settings#index', as: 'settings'
 
   root 'people#index'
 
