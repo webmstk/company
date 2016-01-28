@@ -35,11 +35,8 @@ html
       = yield :letters
 
       - flash.each do |name, msg|
-        - if name == 'notice'
-          .alert.alert-success
-        - else
-          .alert.alert-danger
-        button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
-        = msg
+        div class="alert alert-#{name == 'notice' ? 'success' : 'danger'}"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
+          = msg
 
       = yield
