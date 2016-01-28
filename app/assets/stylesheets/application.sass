@@ -1,17 +1,45 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import 'bootstrap-datetimepicker'
+@import 'croppie'
 @import 'settings'
 
 body
   margin-top: 60px
+
+.table.table_people
+  td
+    vertical-align: middle
+    height: 60px
+  .avatar
+    width: 60px
 
 #new_person, .edit_person
   .col-sm-6
     padding-left: 0
   .form-control
     width: 250px
+  .input-group
+    width: 250px
+  #person_email
+    width: 160px
 
 .login-form
   .form-control
     width: 200px
+
+form.edit_person
+  #upload-demo
+    width: 300px
+    display: none
+    .upload-result
+      position: absolute
+      bottom: 0
+      left: 150px
+  #example
+    img
+      margin: 10px 20px 0 0
+
+.table.person_detail
+  .param
+    width: 250px

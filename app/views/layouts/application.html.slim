@@ -33,13 +33,6 @@ html
 
     .container
       = yield :letters
-      /- if controller_name == 'people'
-      /  .btn-group.btn-group-justified
-      /    - ('А'..'Я').each do |letter|
-      /      - next if ['Ъ', 'Ь'].include?(letter)
-      /      = link_to letter, people_path(letter: letter), class: 'btn btn-default'
-      /    = link_to '*', people_path, class: 'btn btn-default'
-      /  br
 
       - flash.each do |name, msg|
         - if name == 'notice'

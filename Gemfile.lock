@@ -72,6 +72,13 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-base64 (2.1.1)
+      carrierwave (>= 0.8.0, < 0.11.0)
     chronic (0.10.2)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -123,6 +130,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.99)
+    mini_magick (4.3.6)
     mini_portile (0.6.2)
     minitest (5.8.3)
     momentjs-rails (2.10.6)
@@ -260,6 +268,8 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capybara
+  carrierwave
+  carrierwave-base64
   coffee-rails (~> 4.1.0)
   database_cleaner
   dotenv-rails
@@ -270,6 +280,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  mini_magick
   momentjs-rails (>= 2.9.0)
   mysql2 (~> 0.3.18)
   pg

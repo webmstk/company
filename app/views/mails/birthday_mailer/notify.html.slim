@@ -13,10 +13,11 @@
                   b style='color: #ffffff; font: 13px arial' Ура! В ближайшее время кушаем пиццу в честь:
             tbody
               - @persons.each do |person|
-                tr height='50' style='font-size: 13px'
+                tr style='font-size: 13px'
+                  td height='50'
                   td
-                  td
-                    span style='font: 13px arial' = person.full_name
+                    span style='font: 13px arial'
+                      = link_to person.full_name, person_url(person), style: 'text-decoration: none'
                   td
                     span style='font: 13px arial' = RussianDate::date_to_rus(person.birthday, true)
                   td
@@ -29,4 +30,4 @@
           br
           p style='font: 14px arial'
             | Список всех именнинников - 
-            = link_to 'company.svarbi.ru', people_url
+            = link_to 'company.svarbi.ru', people_url, style: 'text-decoration: none'

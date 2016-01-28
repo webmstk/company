@@ -1,3 +1,4 @@
+br
 = form_for @person do |f|
 
   - if @person.errors.any?
@@ -9,39 +10,58 @@
           li = error.first
     br
 
+  .row
+    .col-xs-12.col-sm-8.col-sm-push-4
+      #upload-demo
+        button.upload-result Сохранить
 
-  .form-inputs
-
-    .form-group
-      = f.label :name
-      = f.text_field :name, class: 'form-control'
-
-    .form-group
-      = f.label :lastname
-      = f.text_field :lastname, class: 'form-control'
-
-    .form-group
-      = f.label :email
-      = f.text_field :email, class: 'form-control'
-
-    .form-group
-      = f.label :phone
-      = f.text_field :phone, class: 'form-control'
-
-    .form-group
-      = f.label :birthday
+    .col-xs-12.col-sm-4.col-sm-pull-8
+      = label_tag 'Аватар'
+      input#upload type='file' value='Выберите файл'
+      #example
+        - if @person.avatar?
+          = image_tag @person.avatar_url
+          = image_tag @person.avatar_url :small
       br
-      .col-sm-6
-        = f.text_field :birthday, class: 'datetimepicker9 form-control'
+
+      .form-inputs
+
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+
+        .form-group
+          = f.label :lastname
+          = f.text_field :lastname, class: 'form-control'
+
+        .form-group.email
+          = f.label :email
+          .input-group
+            = f.text_field :email, class: 'form-control'
+            span.input-group-addon @svarbi.ru
+
+
+        .form-group
+          = f.label :phone
+          = f.text_field :phone, class: 'form-control'
+
+        .form-group
+          = f.label :birthday
+          br
+          .col-sm-6
+            = f.text_field :birthday, class: 'datetimepicker9 form-control'
+
+    = f.hidden_field :avatar
 
   br
   br
 
   .form-actions
     = f.submit nil, class: 'btn btn-primary'
-
 br
 
 .row
-  div class='col-md-2 col-md-offset-5'
+  .col-md-2.col-md-offset-5
     = link_to 'К списку сотрудников', people_path, class: 'btn btn-primary'
+
+script Crop.init();

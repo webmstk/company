@@ -34,12 +34,10 @@ class PeopleController < ApplicationController
 
   def edit
     @person.birthday = RussianDate::date_to_rus(@person.birthday)
-    authorize @person
+    @person.email = @person.email.sub('@svarbi.ru', '')
   end
 
   def update
-    authorize @person
-
     if @person.update(person_params)
       redirect_to people_path
     else
@@ -48,8 +46,6 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    authorize @person
-
     if @person.destroy
       redirect_to people_path
       flash[:notice] = 'Сотрудник успешно удалён!'
@@ -61,10 +57,11 @@ class PeopleController < ApplicationController
 
   def load_person
     @person = Person.find(params[:id])
+    authorize @person
   end
 
   def person_params
-    params.require(:person).permit(:name, :lastname, :email, :phone, :birthday)
+    params.require(:person).permit(:name, :lastname, :email, :phone, :birthday, :avatar)
   end
 
   def convert_birthday

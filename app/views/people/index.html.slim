@@ -9,9 +9,10 @@
 
 h1 Сотрудники
 
-table class='table table-striped table-hover'
+table.table.table-striped.table-hover.table_people
   thead
     tr
+      th
       th Имя
       th Email
       th Телефон
@@ -20,6 +21,9 @@ table class='table table-striped table-hover'
   tbody
     - @people.each do |person|
       tr
+        td.avatar
+          = link_to person do
+            = image_tag person.avatar_url(:small) if person.avatar?
         td = link_to person.full_name, person_path(person)
         td = person.email
         td = person.phone

@@ -1,8 +1,23 @@
-h1 = @person.full_name
+h3 = @person.full_name
 
-p = @person.email
-p = @person.phone
-p = @person.birthday
+- if @person.avatar?
+  = image_tag @person.avatar_url
+  br
+
+br
+
+.panel.panel-default
+  .panel-heading Личное дело
+  table.table.person_detail
+    tr
+      th.param Email
+      td = link_to @person.email, "mailto:#{@person.email}"
+    tr
+      th Телефон
+      td = @person.phone
+    tr
+      th День рождения
+      td = @person.birthday
 
 - if current_user
   .form-actions
